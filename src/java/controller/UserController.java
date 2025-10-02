@@ -22,12 +22,12 @@ import model.Users;
  *
  * @author Cristian
  */
-@WebServlet(name = "UserController", urlPatterns = {"/users/user/*"})
+@WebServlet(name = "UserController", urlPatterns = {"/users/user/*"}) // Inyección de la unidad de persistencia, porque al principio los Controladores están aislados.
 public class UserController extends HttpServlet {
 
     @PersistenceContext(unitName = "WebApp_DAWPU")
-    private EntityManager em;
-    @Resource
+    private EntityManager em; //Para la inyección de la PU
+    @Resource //Recurso para hacer las transacciones
     private UserTransaction utx;
     private static final Logger Log = Logger.getLogger(UserController.class.getName());
 
